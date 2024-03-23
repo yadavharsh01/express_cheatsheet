@@ -47,20 +47,20 @@ Create a myapp project
 $ express --view=pug myapp
 # run the application
 $ DEBUG=myapp:*npm start
-express()
+## express()
 express.json()	#
 express.raw()	#
 express.Router()	#
 express.static()	#
 express.text()	#
 express.urlencoded()	#
-Router
+## Router
 router.all()	#
 router.METHOD()	#
 router.param()	#
 router.route()	#
 router.use()	#
-Application
+## Application
 
 var express = require('express')
 var app = express()
@@ -69,12 +69,12 @@ console.dir(app.locals.title)
 //=> 'My App'
 console.dir(app.locals.email)
 //=> 'me@myapp.com'
-Attribute
+#### Attribute
 app.locals	Local variables in the application #
 app.mountpath	Path pattern for mounting sub-apps #
-Events
+#### Events
 mount	The child application is mounted on the parent application, and the event is triggered on the child application #
-Method
+#### Method
 app.all()	#
 app.delete()	#
 app.disable()	#
@@ -94,8 +94,8 @@ app.render()	#
 app.route()	#
 app.set()	#
 app.use()	#
-Request
-Attribute
+## Request
+#### Attribute
 req.app	#
 req.baseUrl	#
 req.body	#
@@ -116,7 +116,7 @@ req.signedCookies	#
 req.stale	#
 req.subdomains	#
 req.xhr	#
-Method
+#### Method
 req.accepts()	#
 req.acceptsCharsets()	#
 req.acceptsEncodings()	#
@@ -125,18 +125,18 @@ req.get()	Get HTTP request header fields #
 req.is()	#
 req.param()	#
 req.range()	#
-Response
+## Response
 
 app.get('/', function (req, res) {
   console.dir(res.headersSent) //false
   res.send('OK')
 console.dir(res.headersSent) //true
 })
-Attribute
+#### Attribute
 res.app	#
 res.headersSent	#
 res.locals	#
-Method
+#### Method
 res.append()	#
 res.attachment()	#
 res.cookie()	#
@@ -159,7 +159,7 @@ res.status()	#
 res.type()	#
 res.vary()	#
 #Example
-Router
+## Router
 Called for any request passed to this router
 
 
@@ -174,48 +174,48 @@ will handle any request ending in /events
 router. get('/events', (req, res, next) => {
   //..
 })
-Response
+## Response
 The res object represents the HTTP response sent by the Express application when it receives an HTTP request
 
 
 app.get('/user/:id', (req, res) => {
   res.send('user' + req.params.id)
 })
-Request
+## Request
 A req object represents an HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
 
 
 app.get('/user/:id', (req, res) => {
   res.send('user' + req.params.id)
 })
-res. end()
+## res. end()
 
 res. end()
 res.status(404).end()
 End the response process. This method actually comes from the Node core, specifically the response.end() method of http.ServerResponse
 
-res.json([body])
+## res.json([body])
 
 res.json(null)
 res.json({ user: 'tobi' })
 res.status(500).json({ error: 'message' })
-app.all
+## app.all
 
 app.all('/secret', function (req, res, next) {
   console.log('access secret section...')
   next() // Pass control to the next handler
 })
-app.delete
+## app.delete
 
 app.delete('/', function (req, res) {
   res.send('DELETE request to homepage')
 })
-app.disable(name)
+## app.disable(name)
 
 app.disable('trust proxy')
 app.get('trust proxy')
 // => false
-app.disabled(name)
+## app.disabled(name)
 
 app.disabled('trust proxy')
 // => true
@@ -223,19 +223,19 @@ app.disabled('trust proxy')
 app.enable('trust proxy')
 app.disabled('trust proxy')
 // => false
-app.engine(ext, callback)
+## app.engine(ext, callback)
 
 var engines = require('consolidate')
 
 app.engine('haml', engines.haml)
 app.engine('html', engines.hogan)
-app.listen([port[, host[, backlog]]][, callback])
+## app.listen([port[, host[, backlog]]][, callback])
 
 var express = require('express')
 
 var app = express()
 app.listen(3000)
-Routing
+## Routing
 
 const express = require('express')
 const app = express()
@@ -254,7 +254,7 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   res.send('POST request to the homepage')
 })
-Middleware
+## Middleware
 
 function logOriginalUrl (req, res, next) {
   console.log('ReqURL:', req.originalUrl)
@@ -273,10 +273,10 @@ app.get('/user/:id', log,
     res.send('User Info')
   }
 )
-Using templates
+## Using templates
 
 app.set('view engine', 'pug')
-Create a Pug template file named index.pug in the views directory with the following content
+### Create a Pug template file named index.pug in the views directory with the following content
 
 
 html
@@ -284,7 +284,7 @@ html
     title= title
   the body
     h1=message
-Create a route to render the index.pug file. If the view engine property is not set, the extension of the view file must be specified
+### Create a route to render the index.pug file. If the view engine property is not set, the extension of the view file must be specified
 
 
 app.get('/', (req, res) => {
